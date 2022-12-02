@@ -10,7 +10,6 @@ import io
 
 import matplotlib
 import matplotlib.pyplot as plt
-from matplotlib.pyplot import MultipleLocator
 import numpy as np
 import pandas as pd
 from scipy.linalg import svd
@@ -18,7 +17,6 @@ import streamlit as st
 import seaborn as sns
 import mpld3
 import streamlit.components.v1 as components
-from mpld3 import plugins
 
 np.set_printoptions(precision=2)
 
