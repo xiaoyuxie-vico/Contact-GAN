@@ -33,6 +33,13 @@ def main():
     st.title('Welcome to Contact Optimization APP!')
     st.markdown('<p class="L2">- Developer: \nXiaoyu Xie, Northwestern University</p>', unsafe_allow_html=True)
     st.markdown('<p class="L2">- Date: December, 2022.</p>', unsafe_allow_html=True)
+    
+    
+    st.markdown('In this APP, you will use simulation data to train a Mechanistic \
+                Machine Learning model and guide the contact optimization. \
+                You can visualize the dataset, choose the hyperparameters for the model,\
+                evaluate the model performance after training, \
+                and select the best contact parameters to guide the design, etc.')
     st.image('images/schematic.png')
 
     # level 1 font
