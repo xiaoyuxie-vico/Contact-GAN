@@ -26,13 +26,13 @@ matplotlib.use('agg')
 
 
 def main():
-    apptitle = 'Contact Optimization via Mechanistic Machine Learning'
+    apptitle = 'Contact Optimization'
     st.set_page_config(
         page_title=apptitle,
         page_icon=':eyeglasses:',
         # layout='wide'
     )
-    st.title('Contact Optimization via Mechanistic Machine Learning')
+    st.title('Welcome to Contact Optimization via Mechanistic Machine Learning')
     st.markdown('<p class="L2">- Developer: \nXiaoyu Xie, Northwestern University</p>', unsafe_allow_html=True)
     st.markdown('<p class="L2">- Date: December, 2022.</p>', unsafe_allow_html=True)
     st.image('images/schematic.png')
@@ -80,7 +80,9 @@ def main():
     data_str_1 = 'Default dataset (different angles)'
     data_str_2 = 'Default dataset (different loadings)'
     flag = ['New dataset', data_str_1, data_str_2]
-    use_new_data = st.selectbox('Chosse a new dataset or use default dataset', flag, 1)
+    # use_new_data = st.selectbox('Chosse a new dataset or use default dataset', flag, 1)
+
+    use_new_data = st.sidebar.selectbox('Chosse a new dataset or use default dataset', flag, 1)
 
     # load dataset
     if use_new_data == 'New dataset':
@@ -144,7 +146,9 @@ def main():
     from sklearn.model_selection import train_test_split
     from sklearn.ensemble import RandomForestRegressor
 
-    df_train, df_test = train_test_split(df_norm, test_size=0.2, random_state=5)
+    test_size = st.sidebar.slider("Model training: test ratio: ", 0.01, 1.0, 0.2)
+    
+    df_train, df_test = train_test_split(df_norm, test_size=test_size, random_state=5)
     if use_new_data == data_str_1:
         X_train, y_train = df_train[['Contact_length', 'Operation_angle']], df_train[['Maximum_displacement']]
         X_test, y_test = df_test[['Contact_length', 'Operation_angle']], df_test[['Maximum_displacement']]
@@ -169,15 +173,13 @@ def main():
 
     X_target_list = []
 
-    if use_new_data == data_str_1:
-        for i in range(45, 55):
-            X_target_list.append([(i - df.mean()[0]) / df.std()[0], 0])
-    elif use_new_data == data_str_2:
-        for i in range(45, 65):
-            X_target_list.append([(i - df.mean()[0]) / df.std()[0], 0.1])
+    test_range_1 = st.sidebar.slider("Select a lower bound for the contact length: ", 20, 50, 40)
+    test_range_2 = st.sidebar.slider("Select a upper bound for the contact length: ", 60, 100, 70)
+
+    for i in range(test_range_1, test_range_2):
+        X_target_list.append([(i - df.mean()[0]) / df.std()[0], 0])
 
     X_target = np.array(X_target_list)
-    print(X_target.shape)
     pred_X_target = regr.predict(X_target)
     pred_y_target = pred_X_target * df.std()[2] + df.mean()[2]
 
