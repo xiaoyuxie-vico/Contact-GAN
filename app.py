@@ -263,7 +263,7 @@ def main():
             fig_html = mpld3.fig_to_html(fig)
             components.html(fig_html, height=600)
 
-    str_1 = 'IF you have any questions or suggestions, please send an email to xiaoyuxie2020@u.northwestern.edu'
+    str_1 = 'IF you have any questions or suggestions, please send an email to xiaoyuxie2020@u.northwestern.edu.'
     st.markdown('<p class="L2">{}</p>'.format(str_1), unsafe_allow_html=True)
 
 if __name__ == '__main__':
