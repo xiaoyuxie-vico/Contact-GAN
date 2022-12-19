@@ -31,6 +31,7 @@ def main():
         # layout='wide'
     )
     st.title('Welcome to Contact Optimization APP!')
+    st.markdown('<p class="L2">- NU-XCMG collobration project</p>', unsafe_allow_html=True)
     st.markdown('<p class="L2">- Developer: \nXiaoyu Xie, Northwestern University</p>', unsafe_allow_html=True)
     st.markdown('<p class="L2">- Date: December, 2022.</p>', unsafe_allow_html=True)
     
@@ -40,6 +41,8 @@ def main():
                 You can visualize the dataset, choose the hyperparameters for the model,\
                 evaluate the model performance after training, \
                 and select the best contact parameters to guide the design, etc.')
+    st.markdown('**Note that the method shown in this APP not only can be applied in this project, \
+                but also can be used in more general design problems.**')
     st.image('images/schematic.png')
 
     # level 1 font
