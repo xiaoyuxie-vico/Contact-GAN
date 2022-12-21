@@ -180,7 +180,7 @@ def main():
     from sklearn.model_selection import train_test_split
     from sklearn.ensemble import RandomForestRegressor
 
-    test_size = st.sidebar.slider("[Hyperparameter] Model training: test ratio: ", 0.01, 1.0, 0.2)
+    test_size = st.sidebar.slider("[Hyperparameter] Model training: test ratio: ", 0.1, 0.4, 0.05)
     
     df_train, df_test = train_test_split(df_norm, test_size=test_size, random_state=5)
     if use_new_data == data_str_1:
