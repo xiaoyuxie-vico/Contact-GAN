@@ -33,7 +33,6 @@ def main():
     st.title('Welcome to Contact Optimization APP!')
     st.markdown('<p class="L2">- NU-XCMG collobration project</p>', unsafe_allow_html=True)
     st.markdown('<p class="L2">- Developer: \nXiaoyu Xie, Northwestern University</p>', unsafe_allow_html=True)
-    st.markdown('<p class="L2">- Date: December, 2022.</p>', unsafe_allow_html=True)
     
     
     st.markdown('In this APP, you will use simulation data to train a Mechanistic \
